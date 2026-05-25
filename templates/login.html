@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<div class="card">
+  <h1>Login</h1>
+  <form method="POST" action="{{ url_for('login') }}">
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" required autocomplete="username">
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required autocomplete="current-password">
+
+    {% if show_2fa %}
+    <label for="totp_code">2FA Code (6 digits)</label>
+    <input type="text" id="totp_code" name="totp_code" pattern="[0-9]{6}" maxlength="6" required autocomplete="one-time-code">
+    {% endif %}
+
+    <button type="submit" class="btn btn-primary">Sign In</button>
+  </form>
+  <p class="muted">No account? <a href="{{ url_for('register') }}">Register here</a></p>
+</div>
+{% endblock %}

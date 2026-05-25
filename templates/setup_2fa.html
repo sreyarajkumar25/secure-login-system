@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Two-Factor Authentication{% endblock %}
+{% block content %}
+<div class="card">
+  <h1>Two-Factor Authentication</h1>
+
+  {% if already_enabled %}
+  <p class="badge badge-success">2FA is currently enabled on your account.</p>
+  <form method="POST" action="{{ url_for('disable_2fa') }}" class="disable-form">
+    <label for="password">Enter password to disable 2FA</label>
+    <input type="password" id="password" name="password" required>
+    <button type="submit" class="btn btn-danger">Disable 2FA</button>
+  </form>
+  <hr>
+  <p>To reconfigure, disable 2FA first then set up again.</p>
+  {% else %}
+  <p>Scan this QR code with Google Authenticator, Authy, or any TOTP app:</p>
+  <div class="qr-container">
+    <img src="data:image/png;base64,{{ qr_code }}" alt="2FA QR Code">
+  </div>
+  <p>Or enter this secret manually: <code>{{ secret }}</code></p>
+
+  <form method="POST" action="{{ url_for('setup_2fa') }}">
+    <label for="totp_code">Enter 6-digit code to verify</label>
+    <input type="text" id="totp_code" name="totp_code" pattern="[0-9]{6}" maxlength="6" required>
+    <button type="submit" class="btn btn-primary">Enable 2FA</button>
+  </form>
+  {% endif %}
+
+  <a href="{{ url_for('dashboard') }}" class="btn btn-outline">Back to Dashboard</a>
+</div>
+{% endblock %}

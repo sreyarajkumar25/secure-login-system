@@ -1,0 +1,257 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  background: #1e293b;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  border-bottom: 1px solid #334155;
+}
+
+.navbar .brand {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #38bdf8;
+  text-decoration: none;
+}
+
+.navbar a {
+  color: #94a3b8;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.navbar a:hover {
+  color: #f1f5f9;
+}
+
+.container {
+  flex: 1;
+  max-width: 520px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  width: 100%;
+}
+
+.card {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.card h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #f1f5f9;
+}
+
+.card h2 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #cbd5e1;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  background: #0f172a;
+  border: 1px solid #475569;
+  border-radius: 8px;
+  color: #f1f5f9;
+  font-size: 1rem;
+}
+
+input:focus {
+  outline: none;
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+}
+
+.hint {
+  display: block;
+  margin-top: -0.75rem;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.2s;
+}
+
+.btn-primary {
+  background: #2563eb;
+  color: white;
+  width: 100%;
+}
+
+.btn-primary:hover {
+  background: #1d4ed8;
+}
+
+.btn-secondary {
+  background: #475569;
+  color: white;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid #475569;
+  color: #94a3b8;
+}
+
+.btn-danger {
+  background: #dc2626;
+  color: white;
+}
+
+.muted {
+  margin-top: 1rem;
+  text-align: center;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.muted a {
+  color: #38bdf8;
+}
+
+.alert {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.alert-success { background: #064e3b; color: #6ee7b7; border: 1px solid #059669; }
+.alert-danger { background: #7f1d1d; color: #fca5a5; border: 1px solid #dc2626; }
+.alert-warning { background: #78350f; color: #fcd34d; border: 1px solid #d97706; }
+.alert-info { background: #1e3a5f; color: #93c5fd; border: 1px solid #2563eb; }
+
+.info-grid {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.info-item .label {
+  font-size: 0.8rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.info-item .value {
+  font-size: 1rem;
+  color: #f1f5f9;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.badge-success { background: #064e3b; color: #6ee7b7; }
+.badge-warning { background: #78350f; color: #fcd34d; }
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.security-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.security-info li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  color: #94a3b8;
+}
+
+.security-info li::before {
+  content: "\2713";
+  position: absolute;
+  left: 0;
+  color: #22c55e;
+}
+
+.qr-container {
+  text-align: center;
+  margin: 1rem 0;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.qr-container img {
+  width: 200px;
+  height: 200px;
+}
+
+code {
+  background: #0f172a;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  word-break: break-all;
+}
+
+.disable-form {
+  margin: 1rem 0;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #334155;
+  margin: 1.5rem 0;
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: #475569;
+  font-size: 0.8rem;
+  border-top: 1px solid #1e293b;
+}

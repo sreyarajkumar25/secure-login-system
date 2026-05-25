@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="card">
+  <h1>Welcome, {{ user.username }}!</h1>
+  <div class="info-grid">
+    <div class="info-item">
+      <span class="label">Email</span>
+      <span class="value">{{ user.email }}</span>
+    </div>
+    <div class="info-item">
+      <span class="label">Member Since</span>
+      <span class="value">{{ user.created_at }}</span>
+    </div>
+    <div class="info-item">
+      <span class="label">2FA Status</span>
+      <span class="value">
+        {% if user.totp_enabled %}
+          <span class="badge badge-success">Enabled</span>
+        {% else %}
+          <span class="badge badge-warning">Disabled</span>
+        {% endif %}
+      </span>
+    </div>
+    <div class="info-item">
+      <span class="label">Session Started</span>
+      <span class="value">{{ session.login_time or 'N/A' }}</span>
+    </div>
+  </div>
+
+  <div class="actions">
+    {% if not user.totp_enabled %}
+      <a href="{{ url_for('setup_2fa') }}" class="btn btn-secondary">Enable 2FA</a>
+    {% else %}
+      <a href="{{ url_for('setup_2fa') }}" class="btn btn-secondary">Manage 2FA</a>
+    {% endif %}
+    <a href="{{ url_for('logout') }}" class="btn btn-outline">Logout</a>
+  </div>
+</div>
+
+<div class="card security-info">
+  <h2>Security Features Active</h2>
+  <ul>
+    <li>Passwords hashed with bcrypt (never stored in plaintext)</li>
+    <li>Parameterized SQL queries prevent SQL injection</li>
+    <li>HttpOnly session cookies with 2-hour expiry</li>
+    <li>Login attempts logged with IP address</li>
+    <li>Optional TOTP two-factor authentication</li>
+  </ul>
+</div>
+{% endblock %}
